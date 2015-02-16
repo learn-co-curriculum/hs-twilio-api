@@ -1,20 +1,52 @@
+---
+tags: kids, ruby, twilio, messaging, apis
+languages: ruby
+level: 1
+type: Intro, Documentation
+---
+
 ###Twilio
 
 [Twilio](https://www.twilio.com/) is a service used to send text messages from another application. 
 
-First things first, you need to have a Twilio account. Because Twilio requires a credit card authorization, please use Flatiron School's account.
-
-We will use the Twilio gem to send texts, [here](https://github.com/twilio/twilio-ruby).
+We will use a [Twilio Ruby gem](https://github.com/twilio/twilio-ruby) to send texts.
 
 First, you need to install the twilio-ruby gem on your computer. In terminal, from any directory, enter `gem install twilio-ruby`
 
-Next, you will need to follow the instructions found in the README.md file of the gem. You'll want to scroll down till you see the words `Getting Started With REST`.
+Next, you will need to follow the instructions below to set up your app:
 
-The only two headers we care about are the instructions under `Setup Work` and `Send an SMS`. We are literally going to copy and paste the code provided into the ruby file in the directory of our final project.
+### Setup
 
-There are a few places that we'll need to fill in with our own data:
-auth_token you are going to want to replace with `ACe330ba04d082392df4cb3511dcb72cec` account_sid you'll want to replace with `2008ea097713e401a16c54029058da82` and finally, the from phone number you'll want to replace with `+181526420231`.
+Paste this into your `Gemfile`:
+``` ruby
+gem 'twilio-ruby'
+```
 
-You are also going to want to change the body of the text and the number you want to send the text to, but that's up to you!
+Paste this into your `.env` file. 
 
-In order to actually execute this code, you'll just want to run the ruby file. In terminal in the directory of your final project, you'll want to enter `ruby filename.rb`
+``` ruby
+# these are the Flatiron School's Twilio credentials
+twilio_account_sid=ACed3ed813257f8acedfce46a695216257
+twilio_auth_token=cb1dd832eda91ea39319fe6827f1650b
+```
+
+### Send an SMS
+
+The rest of the code below will go into one of the routes in your application controller. If you are taking in a phone number via a form, then this code should go into that `post` route.
+
+``` ruby
+# this creates a new connection to the Twilio API
+@client = Twilio::REST::Client.new(ENV['twilio_account_sid'],ENV['twilio_auth_token'])
+
+# this creates a message and sends it out via Twilio
+@client.messages.create(
+  from: '+14342605034', # this is the Flatiron School's Twilio number
+  to: 'replace this text with phone number',
+  body: 'Hey there!'
+)
+```
+
+You can test the Flatiron Twilio account by forking and cloning this lab and putting your phone number in `twilio_test.rb`. Then running `ruby twilio_test.rb` in your terminal. Don't forget to add your phone number to the file first!
+
+
+
