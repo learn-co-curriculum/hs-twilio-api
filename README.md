@@ -42,7 +42,7 @@ The rest of the code below will go into one of the routes in your application co
 @client.messages.create(
   from: '+14342605034', # this is the Flatiron School's Twilio number
   to: 'replace this text with phone number',
-  body: 'Hey there!'
+  body: 'This is where you message goes.'
 )
 ```
 
