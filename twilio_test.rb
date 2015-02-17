@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'twilio-ruby'
 
 # this creates a new connection to the Twilio API
