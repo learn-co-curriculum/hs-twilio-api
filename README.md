@@ -7,7 +7,7 @@ type: Intro, Documentation
 
 ###Twilio
 
-[Twilio](https://www.twilio.com/) is a service used to send text messages from another application. 
+[Twilio](https://www.twilio.com/) is a service used to send text messages from another application.
 
 We will use a [Twilio Ruby gem](https://github.com/twilio/twilio-ruby) to send texts.
 
@@ -22,21 +22,13 @@ Paste this into your `Gemfile`:
 gem 'twilio-ruby'
 ```
 
-Paste this into your `.env` file. 
-
-``` ruby
-# these are the Flatiron School's Twilio credentials
-twilio_account_sid=ACed3ed813257f8acedfce46a695216257
-twilio_auth_token=cb1dd832eda91ea39319fe6827f1650b
-```
-
 ### Send an SMS
 
 The rest of the code below will go into one of the routes in your application controller. If you are taking in a phone number via a form, then this code should go into that `post` route.
 
 ``` ruby
 # this creates a new connection to the Twilio API
-@client = Twilio::REST::Client.new(ENV['twilio_account_sid'],ENV['twilio_auth_token'])
+@client = Twilio::REST::Client.new('ACed3ed813257f8acedfce46a695216257','cb1dd832eda91ea39319fe6827f1650b')
 
 # this creates a message and sends it out via Twilio
 @client.messages.create(
