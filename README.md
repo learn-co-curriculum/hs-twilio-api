@@ -1,9 +1,4 @@
----
-tags: kids, ruby, twilio, messaging, apis
-languages: ruby
-level: 1
-type: Intro, Documentation
----
+
 
 ###Twilio
 
